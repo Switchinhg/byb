@@ -1,0 +1,6 @@
+.cart{
+    font-size: 3rem;
+}
+.cart:hover{
+    color: rgba(0, 0, 0, 0.555);
+}
