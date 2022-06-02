@@ -10,15 +10,16 @@ const ItemListContainer = () => {
         <div className="productos">
 
             <div className="row1">
-                <Producto stock={0}/>
-                <Producto stock={24}/>
-                <Producto stock={14}/>
+                <Producto />
+                <Producto />
+                <Producto />
             </div>
             <div className="row2">
-                <Producto stock={8}/>
-                <Producto stock={18}/>
-                <Producto stock={12}/>
+                <Producto />
+                <Producto />
+                <Producto />
             </div>
+            
         </div>
     </div>
 )
