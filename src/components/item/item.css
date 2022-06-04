@@ -1,0 +1,34 @@
+.producto_img  {
+    height: 177.777px;
+    width: 266px;
+}
+
+.producto_nombre  {
+    font-style: oblique;
+    font-weight: bold;
+
+}
+
+.producto {
+
+    width: 290px;
+    background-color: white;
+    box-shadow: 1px 1px 5px gray;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    padding-bottom: 2rem;
+
+}
+.boton {
+    background-color: white;
+    border: solid 1px black;
+    font-style: none;
+    text-decoration: none;
+    color: black;
+    padding: 0.5rem;
+    border-radius: 5px;
+}

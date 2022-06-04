@@ -1,5 +1,5 @@
+import ItemList from '../itemlist/itemlist'
 import './ItemListContainer.css'
-import Producto from '../producto/producto'
 
 const ItemListContainer = () => {
   return (
@@ -8,20 +8,12 @@ const ItemListContainer = () => {
             <h1 className="titulos">Destacados</h1>
         </div>
         <div className="productos">
-
-            <div className="row1">
-                <Producto stock={0}/>
-                <Producto stock={24}/>
-                <Producto stock={14}/>
-            </div>
-            <div className="row2">
-                <Producto stock={8}/>
-                <Producto stock={18}/>
-                <Producto stock={12}/>
-            </div>
+            <ItemList />
+            
         </div>
     </div>
 )
 }
 
 export default ItemListContainer
+
