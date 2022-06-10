@@ -6,12 +6,12 @@ function ItemCount ({stock,initial}){
     const [productos, setNumProds] = useState(initial)
 
     function sumarProd(){
-        if(productos !== stock && stock !== 0 ){
+        if(productos < stock){
             setNumProds(productos+1)
         }
     }
     function restarProd(){
-        if(productos!==1){
+        if(productos>initial){
 
             setNumProds(productos-1)
         }

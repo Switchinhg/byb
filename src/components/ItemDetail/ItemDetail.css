@@ -1,0 +1,21 @@
+.prodInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+.wrapper{
+    box-shadow: 0 0 5px black;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tituloimg img{
+    width: 400px;
+}
+button{
+    width: 200px;
+    padding: 1rem 0.2rem;
+}

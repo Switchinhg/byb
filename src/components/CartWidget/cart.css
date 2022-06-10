@@ -3,4 +3,5 @@
 }
 .cart:hover{
     color: rgba(0, 0, 0, 0.555);
+    cursor: pointer;
 }

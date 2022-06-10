@@ -1,70 +1,87 @@
-import camita1 from '../../imgs/img_productos/camita_almohadon_chico_1.png'
-import camita2 from '../../imgs/img_productos/camita_agarramano_aqua.png'
-import camita3 from '../../imgs/img_productos/camita_beigeblanco_rayas.png'
-import camita4 from '../../imgs/img_productos/camita_jean_azul_1.png'
-import camita5 from '../../imgs/img_productos/camita_handbag_1.png'
-import camita6 from '../../imgs/img_productos/camita_etyt_1.png'
-
-
     const Prods = [{
-            id:'1',
+            id:1,
             prodName: 'Camita almohadón chico',
+            categoria:"cama",
             info: 'Camita premium(cambiar)',
             precio:240,
             tamanios:'N/A',
-            img: camita1
+            img: '/img_productos/camita_almohadon_chico_1.png'
         },
         {
-            id:'2',
+            id:2,
             prodName: 'Camita agarramano Aqua',
+            categoria:"cama",
             info: 'Camita premium(cambiar)',
             precio:230,
             tamanios:'N/A',
-            img:camita2
+            img:'/img_productos/camita_agarramano_aqua.png'
         },
         {
-            id:'3',
+            id:3,
             prodName: 'Camita Beige a rayas',
+            categoria:"cama",
             info: 'Camita premium(cambiar)',
             precio:320,
             tamanios:'N/A',
-            img:camita3
+            img:'/img_productos/camita_beigeblanco_rayas.png'
         },
         {
-            id:'4',
+            id:4,
             prodName: 'Camita jean azul',
+            categoria:"cama",
             info: 'Camita premium(cambiar)',
             precio:100,
             tamanios:'N/A',
-            img:camita4
+            img:'/img_productos/camita_jean_azul_1.png'
         },
         {
-            id:'5',
+            id:5,
             prodName: 'Camita handbag',
+            categoria:"cama",
             info: 'Camita premium(cambiar)',
             precio:600,
             tamanios:'N/A',
-            img:camita5
+            img:'/img_productos/camita_handbag_1.png'
         },
         {
-            id:'6',
+            id:6,
             prodName: 'Camita doble',
+            categoria:"cama",
             info: 'Camita premium(cambiar)',
             precio:500,
             tamanios:'N/A',
-            img:camita6
+            img:'/img_productos/camita_etyt_1.png'
         },
+        {
+            id:7,
+            prodName:'Collar personalizado',
+            categoria:'collar',
+            info:'Collar premium(cambiar)',
+            precio:250,
+            tamanios:'N/A',
+            img:'/img_productos/collar1.jpg'
+    }
     ]
-
-    export const getFetch = () => {
+/* Puede traer a un solo producto, o a la cantidad que se le pida */
+/* si se lo llama con un parametro da la cantidad de productos,
+si le pones 'null' y 5 te devuelve solo el objeto 5 */
+/* Sino devuelve todos los productos */
+    export const getFetch = (cuantos, id) => {
         return new Promise((resolve) => {
             setTimeout(() => {
-                resolve(Prods);
-            }, 3000);
+                if(cuantos){/* no entra si cuantos vale undefined o null  */
+                    resolve(Prods.filter(obj=>obj.id<=cuantos));
+                }
+                if(id){
+                    resolve(Prods.find(obj=>obj.id===id));
+                }
+                else{
+                    resolve(Prods)
+                }
+            }, 2000);
         });
     }; 
     
-   
 
 
     /*     2.1.58 */

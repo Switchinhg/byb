@@ -1,7 +1,6 @@
 import './item.css'
 
 const Item = (prop) => {
-    console.log(prop.prod.img)
     return(
         <div className="producto" >
             
