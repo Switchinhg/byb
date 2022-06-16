@@ -1,6 +1,8 @@
 import './NavBar.css'
 import logo from '../../imgs/bigandbonnie1.png'
-import Cart from '../CartWidget/cart'
+import CartWidget from '../CartWidget/cart'
+import {Link, NavLink} from 'react-router-dom'
+
 
 export default function NavBar() {
     return(
@@ -9,16 +11,23 @@ export default function NavBar() {
         <div className="NavBar">
             <header>
                 <div className="header-container">
-                    <div className="logo"><img src={logo} alt="" /></div>
+                    <div className="logo">
+                        <Link to='/'><img src={logo} alt="" /></Link>
+                        
+                        </div>
                     <div className="navbar-input"><input type="text" placeholder='BUSCAR' /></div>
                     <div className="topbar">
-                        <a href="./index.html">Inicio</a>
-                        <a href="./index.html">Camas</a>
-                        <a href="./index.html">Collares</a>
-                        <a href="./index.html">Contacto</a>
+
+                
+                    <NavLink to='/'  className={({ isActive })=> isActive ?  'selected': 'deselected'}>Inicio</NavLink>
+
+                    <NavLink to="/catalogo" className={({ isActive })=> isActive ?  'selected': 'deselected'}>Catalogo</NavLink>
+                    <NavLink to="/contacto" className={({ isActive })=> isActive ?  'selected': 'deselected'}>Contacto</NavLink>
                     </div>
                     <div className="cart">
-                            <Cart />
+                        <Link to='/cart'>
+                            <CartWidget />
+                        </Link>
                     </div>
                 </div>
             </header>

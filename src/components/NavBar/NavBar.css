@@ -53,11 +53,18 @@
     margin-bottom: 1rem;
     text-decoration: none;
     border: solid 1px gray;
-    color: black;
     padding: 0.5rem;
     border-radius: 5px;
 }
 .topbar a:hover{
+    background-color: brown;
+    color: white;
+}
+.deselected{
+    color: black;
+
+}
+.selected{
     background-color: brown;
     color: white;
 }

@@ -1,4 +1,5 @@
 import {useState,useEffect} from 'react'
+import { Link } from 'react-router-dom'
 import { getFetch } from '../helpers/getFetch'
 import ItemList from '../itemlist/itemlist'
 import Spinner from '../spinner/spinner'
@@ -17,7 +18,7 @@ const ItemListContainer = () => {
         .catch(err => console.log(err))
         .finally(()=>setLoading(false))
     }, [])
-
+    
     return (
         <div className="contenedor">
             <div className="destacados_titulo">
@@ -27,8 +28,13 @@ const ItemListContainer = () => {
             {load?
             <Spinner />
             :
-                <ItemList prods={prods} />
+            <ItemList prods={prods} />
             }
+            </div>
+            <div className="vertodos">
+                <Link to='/catalogo' >
+                <button className='boton'>Ver Todos</button>
+                </Link>
             </div>
         </div>
     )

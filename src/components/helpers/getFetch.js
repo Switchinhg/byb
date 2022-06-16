@@ -1,5 +1,5 @@
     const Prods = [{
-            id:1,
+            id:'1',
             prodName: 'Camita almohadón chico',
             categoria:"cama",
             info: 'Camita premium(cambiar)',
@@ -8,7 +8,7 @@
             img: '/img_productos/camita_almohadon_chico_1.png'
         },
         {
-            id:2,
+            id:'2',
             prodName: 'Camita agarramano Aqua',
             categoria:"cama",
             info: 'Camita premium(cambiar)',
@@ -17,7 +17,7 @@
             img:'/img_productos/camita_agarramano_aqua.png'
         },
         {
-            id:3,
+            id:'3',
             prodName: 'Camita Beige a rayas',
             categoria:"cama",
             info: 'Camita premium(cambiar)',
@@ -26,7 +26,7 @@
             img:'/img_productos/camita_beigeblanco_rayas.png'
         },
         {
-            id:4,
+            id:'4',
             prodName: 'Camita jean azul',
             categoria:"cama",
             info: 'Camita premium(cambiar)',
@@ -35,7 +35,7 @@
             img:'/img_productos/camita_jean_azul_1.png'
         },
         {
-            id:5,
+            id:'5',
             prodName: 'Camita handbag',
             categoria:"cama",
             info: 'Camita premium(cambiar)',
@@ -44,7 +44,7 @@
             img:'/img_productos/camita_handbag_1.png'
         },
         {
-            id:6,
+            id:'6',
             prodName: 'Camita doble',
             categoria:"cama",
             info: 'Camita premium(cambiar)',
@@ -53,7 +53,7 @@
             img:'/img_productos/camita_etyt_1.png'
         },
         {
-            id:7,
+            id:'7',
             prodName:'Collar personalizado',
             categoria:'collar',
             info:'Collar premium(cambiar)',
@@ -78,10 +78,6 @@ si le pones 'null' y 5 te devuelve solo el objeto 5 */
                 else{
                     resolve(Prods)
                 }
-            }, 2000);
+            }, 1000);
         });
     }; 
-    
-
-
-    /*     2.1.58 */

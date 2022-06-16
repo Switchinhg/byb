@@ -16,6 +16,7 @@ function ItemCount ({stock,initial}){
             setNumProds(productos-1)
         }
     }
+    {/* <ItemCount stock={20} initial={1}/> */}
 
     return (
         <>

@@ -3,7 +3,7 @@ import { FaShoppingCart } from "react-icons/fa";
 
 
 
-export default function Cart() {
+export default function CartWidget() {
     return(
         <div className="cart">
             <FaShoppingCart />
