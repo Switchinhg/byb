@@ -5,7 +5,8 @@
             info: 'Camita premium(cambiar)',
             precio:240,
             tamanios:'N/A',
-            img: '/img_productos/camita_almohadon_chico_1.png'
+            img: '/img_productos/camita_almohadon_chico_1.png',
+            stock:10,
         },
         {
             id:'2',
@@ -14,7 +15,8 @@
             info: 'Camita premium(cambiar)',
             precio:230,
             tamanios:'N/A',
-            img:'/img_productos/camita_agarramano_aqua.png'
+            img:'/img_productos/camita_agarramano_aqua.png',
+            stock:6,
         },
         {
             id:'3',
@@ -23,7 +25,8 @@
             info: 'Camita premium(cambiar)',
             precio:320,
             tamanios:'N/A',
-            img:'/img_productos/camita_beigeblanco_rayas.png'
+            img:'/img_productos/camita_beigeblanco_rayas.png',
+            stock:12,
         },
         {
             id:'4',
@@ -32,7 +35,8 @@
             info: 'Camita premium(cambiar)',
             precio:100,
             tamanios:'N/A',
-            img:'/img_productos/camita_jean_azul_1.png'
+            img:'/img_productos/camita_jean_azul_1.png',
+            stock:2,
         },
         {
             id:'5',
@@ -41,7 +45,8 @@
             info: 'Camita premium(cambiar)',
             precio:600,
             tamanios:'N/A',
-            img:'/img_productos/camita_handbag_1.png'
+            img:'/img_productos/camita_handbag_1.png',
+            stock:38,
         },
         {
             id:'6',
@@ -50,7 +55,8 @@
             info: 'Camita premium(cambiar)',
             precio:500,
             tamanios:'N/A',
-            img:'/img_productos/camita_etyt_1.png'
+            img:'/img_productos/camita_etyt_1.png',
+            stock:5,
         },
         {
             id:'7',
@@ -59,7 +65,8 @@
             info:'Collar premium(cambiar)',
             precio:250,
             tamanios:'N/A',
-            img:'/img_productos/collar1.jpg'
+            img:'/img_productos/collar1.jpg',
+            stock:200,
     }
     ]
 /* Puede traer a un solo producto, o a la cantidad que se le pida */

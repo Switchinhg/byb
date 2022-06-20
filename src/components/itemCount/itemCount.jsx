@@ -2,8 +2,12 @@ import './itemCount.css'
 import  {useState} from 'react'
 
 
-function ItemCount ({stock,initial}){
+function ItemCount ({stock,initial, onAdd}){
     const [productos, setNumProds] = useState(initial)
+
+    const onChange = () => {
+        onAdd(productos)
+    }
 
     function sumarProd(){
         if(productos < stock){
@@ -16,16 +20,16 @@ function ItemCount ({stock,initial}){
             setNumProds(productos-1)
         }
     }
-    {/* <ItemCount stock={20} initial={1}/> */}
+    
 
     return (
         <>
-            <p className='contador'>{productos}</p>
             <div className="separar">
-            <button onClick={sumarProd}  className="boton">+</button>
-            <button onClick={restarProd} className="boton">--</button>
+            <button onClick={sumarProd}  className="botonChico boton">+</button>
+            <p className='contador'>{productos}</p>
+            <button onClick={restarProd} className="botonChico boton">-</button>
             </div>
-            <button className='boton agregar'>Agregar</button>
+            <button className='boton agregar' onClick={onChange}>Agregar</button>
         </>
     )
 }

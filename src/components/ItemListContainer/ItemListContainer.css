@@ -33,6 +33,10 @@
     color: black;
     background-color: tomato;
 }
+.botonChico{
+    width: 3rem;
+    
+}
 
 .precio {
     text-align: center;

@@ -1,6 +1,13 @@
 .separar{
+    width: 5rem;
+    height:2rem;
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 1rem;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    border: solid 1px black;
 }
 .separar button{
     padding: 0.5rem 1rem;
@@ -9,4 +16,7 @@
 .agregar{
     padding: 0.5rem 1.6rem;
     cursor: pointer;
+}
+.contador{
+    font-size: 0.7rem;
 }

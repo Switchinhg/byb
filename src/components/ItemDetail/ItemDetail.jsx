@@ -1,6 +1,16 @@
+import { useState } from 'react'
+import AgregarCarrito from '../AgregarCarrito/AgregarCarrito'
+import ItemCount from '../itemCount/itemCount'
 import './ItemDetail.css'
 
 export const ItemDetail = ({producto}) => {
+    const [inputType, setInputTipe] = useState('button')
+
+    const onAdd=(cant) =>{
+        console.log(cant)
+        alert("agregado al carrito " + cant + " " + producto.prodName)
+        setInputTipe('input')
+    }
 
 return (
     <div className="prodInfo">
@@ -14,7 +24,15 @@ return (
                 <p>{producto.info}</p>
                 <p>${producto.precio}</p>
             </div>
-            <button className='boton'>comprar</button>
+            <div className="counter">
+                {
+                    inputType==='button'?
+                    <ItemCount stock={producto.stock} initial={1} onAdd={onAdd}/>
+                    :
+                    <AgregarCarrito/>
+
+                }
+            </div>
         </div>
     </div>
 )
