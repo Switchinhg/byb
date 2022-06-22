@@ -1,15 +1,22 @@
 import { useState } from 'react'
 import AgregarCarrito from '../AgregarCarrito/AgregarCarrito'
+import { useCartContext } from '../contexto/CartContext'
 import ItemCount from '../itemCount/itemCount'
 import './ItemDetail.css'
 
 export const ItemDetail = ({producto}) => {
+    /* para cambiar de boton al hacer clic en comprar */
     const [inputType, setInputTipe] = useState('button')
 
+    /* para usar el contexto,usamos la funcion exportada de CartContext 
+    en vez de importar dos cosas */
+    const { addToCart } = useCartContext()
+
     const onAdd=(cant) =>{
-        console.log(cant)
-        alert("agregado al carrito " + cant + " " + producto.prodName)
+        /* Al cambiar el input al hacer clic en el boton se cambia a seguir comprando o ir a cart */
         setInputTipe('input')
+        /* Crea un nuevo objeto de producto agregandole la cantidad */
+        addToCart({...producto, cantidad: cant})
     }
 
 return (

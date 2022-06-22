@@ -9,7 +9,6 @@ import './ItemListContainer.css'
 const ItemListContainer = () => {
     const[prods,setProds] = useState([])
     let[load,setLoading] = useState(true)
-    
     useEffect(() => {
         getFetch(6)
         .then((resp)=>{

@@ -85,6 +85,6 @@ si le pones 'null' y 5 te devuelve solo el objeto 5 */
                 else{
                     resolve(Prods)
                 }
-            }, 1000);
+            }, 0);
         });
     }; 
