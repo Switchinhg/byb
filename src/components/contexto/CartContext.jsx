@@ -28,25 +28,38 @@ export const CartContextProvider = ({ children }) => {
     }
 
     /* Sacar item del carrito */
-    const removeFromCart = (id) => {
+    const modificarCarrito = (id,hacer) => {
         /* Busca el objeto del item a remover */
         const item = cart.find(e=>e.id===id)
             /* busca el index del objeto a remover */
         const index = cart.indexOf(item)
-            /* se fija si la cantidad del item es mayor a uno, si lo es, creo otra variable sin el item
-            le saca la cantidad al item, y lo agrega denuevo para que haga re render */
-        if(item.cantidad>1){
-            const items =cart.filter(e=>e.id!==id)
-            item.cantidad-=1
-            items.splice(index,0,item)
-            setCart(items)
+            /* se fija si la cantidad del item es mayor a uno, si lo es, creo otro array sin ese item
+            luego, si la cantidad es mayor a 1, se resta o se suma producto dependiendo del boton clickeado
+            luego lo mete denuevo al array en el mismo lugar, y lo pone en setCart para el re render  */
+            if(item.cantidad>=1){
+                const items =cart.filter(e=>e.id!==id)
+
+                if(hacer==='minus')item.cantidad-=1
+                else if(item.cantidad<item.stock)item.cantidad+=1
+
+                items.splice(index,0,item)
+                setCart(items)
+
+                if(item.cantidad===0)setCart(cart.filter(e=>e.id!==id))
+
         }
         else{
             /* si tiene 1 item y lo borra se saca el producto */
             setCart(cart.filter(e=>e.id!==id))
             console.log("filtrado")
         } 
+    }
+    const borrarProd = (id)=>{
+        setCart(cart.filter(e=>e.id!==id))
+    }
 
+    const total = () =>{
+        return cart.reduce((acum, i) => acum + i.cantidad * i.precio, 0)
     }
 
 
@@ -57,8 +70,9 @@ export const CartContextProvider = ({ children }) => {
                 cart,
                 /* Fnciones */
                 addToCart,
-                removeFromCart
-                
+                modificarCarrito,
+                borrarProd, 
+                total
             }}
         >
             {children}
