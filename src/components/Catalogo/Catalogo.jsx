@@ -12,10 +12,10 @@ const Catalogo = () => {
     const[prods,setProds] = useState([])
     let[load,setLoading] = useState(true)
     const { categoriaID } = useParams()
-
+    console.log(categoriaID)
     useEffect(() => {
         setLoading(true)
-        categoriaID?
+        categoriaID ?
             getFetch()
             .then((resp)=>{
                 setProds(resp.filter((p => p.categoria === categoriaID)))

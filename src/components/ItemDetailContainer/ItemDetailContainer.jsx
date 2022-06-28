@@ -10,7 +10,7 @@ export const ItemDetailContainer = () => {
     const [producto, setProducto] = useState({})
     let [load,setLoading] = useState(true)
     const {ID} = useParams()
-
+    
     useEffect(() => {
         /* primer parametro null para que no traiga todo el array, solo el id */
         getFetch(null,ID)

@@ -33,9 +33,7 @@ export const CartContextProvider = ({ children }) => {
         const item = cart.find(e=>e.id===id)
             /* busca el index del objeto a remover */
         const index = cart.indexOf(item)
-            /* se fija si la cantidad del item es mayor a uno, si lo es, creo otro array sin ese item
-            luego, si la cantidad es mayor a 1, se resta o se suma producto dependiendo del boton clickeado
-            luego lo mete denuevo al array en el mismo lugar, y lo pone en setCart para el re render  */
+
             if(item.cantidad>=1){
                 const items =cart.filter(e=>e.id!==id)
 
@@ -61,6 +59,12 @@ export const CartContextProvider = ({ children }) => {
     const total = () =>{
         return cart.reduce((acum, i) => acum + i.cantidad * i.precio, 0)
     }
+    const totalProds = () =>{
+        return cart.reduce((acum, i) => acum + i.cantidad, 0)
+    }
+    const borrarCarrito = () =>{
+        setCart([])
+    }
 
 
     /* Retornamos el provider con el contexto y el state */
@@ -72,7 +76,9 @@ export const CartContextProvider = ({ children }) => {
                 addToCart,
                 modificarCarrito,
                 borrarProd, 
-                total
+                total,
+                totalProds,
+                borrarCarrito
             }}
         >
             {children}

@@ -1,7 +1,35 @@
 .cart{
     font-size: 3rem;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color:black;
+    
+}
+.cart p{
+    font-size: 1.2rem;
+    position: relative;
+    left: -1.8rem;
+    top: -0.4rem;
+    color: white;
+    text-shadow: 0 0 5px black;
+    background-color:  rgba(255, 0, 0, 0.651) ;
+    border-radius: 10px 10px 10px 10px;
+    padding:  0 0.2rem;
+}
+
+.cart a{
+    text-decoration: none;
+
 }
 .cart:hover{
     color: rgba(0, 0, 0, 0.555);
     cursor: pointer;
+}
+.carritoTamaño{
+    padding: 0 0.2rem;
+    width: 1rem;
+}
+.mayor10{
+    width: 1.3rem;
 }
