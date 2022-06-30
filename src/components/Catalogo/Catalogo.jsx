@@ -1,39 +1,36 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { getFetch } from '../helpers/getFetch'
 import ItemList from '../itemlist/itemlist'
 import Spinner from '../spinner/spinner'
-
 import { useParams } from 'react-router-dom'
 import Categorias from '../CatalogoCategorias/Categorias'
 import ProdNotFound from '../ProdNotFound/ProdNotFound'
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore'
 
 const Catalogo = () => {
     const[prods,setProds] = useState([])
     let[load,setLoading] = useState(true)
     const { categoriaID } = useParams()
-    console.log(categoriaID)
+
     useEffect(() => {
         setLoading(true)
+        
+        
+        const db = getFirestore()
+        const queryCollection =  collection(db,'productos')
+        const queryCollectionFilter = query(queryCollection, where("categoria","==",categoriaID?categoriaID:null))
+        
         categoriaID ?
-            getFetch()
-            .then((resp)=>{
-                setProds(resp.filter((p => p.categoria === categoriaID)))
-            })
+        
+            getDocs(queryCollectionFilter)
+            .then(resp => setProds(resp.docs.map(item=>({id:item.id, ...item.data() } ) ) ) )
             .catch(err => console.log(err))
             .finally(()=>setLoading(false))
         :
         /* Es undefined */
-            getFetch()
-            .then((resp)=>{
-                setProds(resp)
-            })
-            .catch(err => console.log(err))
+        getDocs(queryCollection)
+            .then(resp => setProds(resp.docs.map(item=>({id:item.id, ...item.data() } ) ) ) )
             .finally(()=>setLoading(false))
 }, [categoriaID])
-
-
-
     return (
         <div className="contenedor">
                 <div className="destacados_titulo">

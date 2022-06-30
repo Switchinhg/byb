@@ -53,7 +53,7 @@ const Cart = () => {
       <button onClick={()=>{
         MsgCorrecto.fire({
           title: 'Compra realizada',
-          text: 'Gracias por tu compra',
+          html: `<p>Gracias por comprar ${cart.map(i=>i.cantidad +' '+i.prodName)} </p>`,
           icon: 'success',
           confirmButtonText: 'Continuar'
         })

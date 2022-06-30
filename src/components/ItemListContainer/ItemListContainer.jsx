@@ -1,6 +1,6 @@
+import { collection, getDocs, getFirestore, limit, query } from 'firebase/firestore'
 import {useState,useEffect} from 'react'
 import { Link } from 'react-router-dom'
-import { getFetch } from '../helpers/getFetch'
 import ItemList from '../itemlist/itemlist'
 import Spinner from '../spinner/spinner'
 
@@ -9,11 +9,14 @@ import './ItemListContainer.css'
 const ItemListContainer = () => {
     const[prods,setProds] = useState([])
     let[load,setLoading] = useState(true)
+    
     useEffect(() => {
-        getFetch(6)
-        .then((resp)=>{
-            setProds(resp)
-        })
+        const db = getFirestore()
+        const queryCollection =  collection(db,'productos')
+        const q = query(queryCollection, limit(6))
+
+        getDocs(q)
+        .then(resp => setProds(resp.docs.map(item=>({id:item.id, ...item.data() } ) ) ) )
         .catch(err => console.log(err))
         .finally(()=>setLoading(false))
     }, [])
