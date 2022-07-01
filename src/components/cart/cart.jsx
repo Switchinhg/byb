@@ -4,11 +4,37 @@ import { VscRemove,VscAdd } from "react-icons/vsc";
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content';
-
+import { addDoc, collection, getFirestore } from 'firebase/firestore'
 
 const Cart = () => {
     const { cart, modificarCarrito,borrarProd,total,totalProds,borrarCarrito} = useCartContext()
     const MsgCorrecto = withReactContent(Swal)
+    const db = getFirestore()
+    const ordenCollection = collection(db,'ordenes')
+
+    async function crearOrden(e){
+      // e.preventDefault()
+      let orden = {
+                    usuario:{nombre:'Santiago',email:'santifonlop@hotmail.com',telefono:'094680478'},
+                    total: total(),
+                    /* Pongo todo el obj producto en la orden para mostrar todo el producto en la orden */
+                    items: {...cart}
+                  }
+      addDoc(ordenCollection, orden)
+
+      .then(resp=>
+      MsgCorrecto.fire({
+        title: 'Compra realizada',
+        html: `<p>Gracias por comprar ${cart.map(i=>" "+i.cantidad +' '+i.prodName + " ")} </p>
+              <div>ID de orden: ${resp.id}</div>`,
+        icon: 'success',
+        confirmButtonText: 'Continuar'
+      }),
+      // borrarCarrito()
+      )
+      .catch(err=>console.log(err))
+      
+    }
     
   return (
     <>
@@ -51,14 +77,8 @@ const Cart = () => {
         <button onClick={()=>borrarCarrito()} className='boton'>Vaciar Carrito</button>
 
       <button onClick={()=>{
-        MsgCorrecto.fire({
-          title: 'Compra realizada',
-          html: `<p>Gracias por comprar ${cart.map(i=>i.cantidad +' '+i.prodName)} </p>`,
-          icon: 'success',
-          confirmButtonText: 'Continuar'
-        })
-        borrarCarrito()
-      }} className='boton'>Comprar</button>
+        crearOrden()
+      }} className='boton'>Realizar Compra</button>
       </div>
     
          : null

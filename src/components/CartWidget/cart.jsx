@@ -7,7 +7,6 @@ import { useCartContext } from '../contexto/CartContext'
 export default function CartWidget() {
     
     const { totalProds } = useCartContext()   //usamos el contexto
-    console.log(totalProds)
     return(
         <div className="cart">
             <FaShoppingCart />

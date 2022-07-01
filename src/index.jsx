@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-/* import ItemCount from './components/itemCount/itemCount'; */
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom' 
 import NotFound from './components/404/NotFound';
 import Cart from './components/cart/cart';

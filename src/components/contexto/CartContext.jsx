@@ -12,11 +12,13 @@ pone como children, que luego se usa para ponerlo en el return */
 export const CartContextProvider = ({ children }) => {
     const [cart, setCart] = useState([])
 
+    
+
     const addToCart = (producto) => {        
         // si el producto ya esta en el carrito, agregarle la cantidad en vez de agregarlo entero
         const cart2 = cart.find(el => el.id === producto.id)
         if (cart2) {
-            cart2.cantidad += producto.cantidad
+            modificarCarrito(producto.id, 'plus',producto.cantidad)
             /* si la cantidad del producto en el carrito es mayor al stock, pone lo maximo disponible */
             if(cart2.cantidad >producto.stock){
                 cart2.cantidad = producto.stock
@@ -28,7 +30,7 @@ export const CartContextProvider = ({ children }) => {
     }
 
     /* Sacar item del carrito */
-    const modificarCarrito = (id,hacer) => {
+    const modificarCarrito = (id,hacer,cuanto) => {
         /* Busca el objeto del item a remover */
         const item = cart.find(e=>e.id===id)
             /* busca el index del objeto a remover */
@@ -38,7 +40,7 @@ export const CartContextProvider = ({ children }) => {
                 const items =cart.filter(e=>e.id!==id)
 
                 if(hacer==='minus')item.cantidad-=1
-                else if(item.cantidad<item.stock)item.cantidad+=1
+                else if(item.cantidad<item.stock)item.cantidad+=cuanto?cuanto:1
 
                 items.splice(index,0,item)
                 setCart(items)
