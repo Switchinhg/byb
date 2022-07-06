@@ -4,10 +4,13 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import NotFound from './components/404/NotFound';
 import Cart from './components/cart/cart';
 import Catalogo from './components/Catalogo/Catalogo';
+import CompraConcretada from './components/compraConcretada/CompraConcretada';
 import Contacto from './components/contacto/Contacto';
 import { CartContextProvider } from './components/contexto/CartContext';
+import { UserContextProvider } from './components/contexto/userContext';
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import { Login } from './components/Login/Login';
 import NavBar from './components/NavBar/NavBar';
 import { getFirestoreApp } from './firebase/config';
 import './index.css';
@@ -22,6 +25,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
     <CartContextProvider>
+      <UserContextProvider >
       <BrowserRouter>
         <NavBar/>
         <Routes>
@@ -38,6 +42,8 @@ root.render(
           {/* Contacto */}
           <Route path='/contacto' element={<Contacto />} />
 
+          <Route path='/register' element={<Login />} />
+          <Route path='/comprafinalizada' element={<CompraConcretada/>} />
 
           {/* no encontrado */}
           <Route path='/404' element={<NotFound/>} />
@@ -47,6 +53,7 @@ root.render(
 
         </Routes>
       </BrowserRouter>
+      </UserContextProvider>
     </CartContextProvider>
   </>
 );

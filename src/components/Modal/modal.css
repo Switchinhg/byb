@@ -1,0 +1,71 @@
+.contenido-modal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    max-width: 500px;
+    padding: 50px;
+    z-index: 1000;
+    border-radius: 10px;
+}
+
+
+.cerrar{
+    font-size: 1.6rem;
+    cursor: pointer;
+    width: 25px;
+    height: 26px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.fondo-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.548);
+    z-index: 1000;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+
+  input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+.modalUsuario input{
+    border: solid rgba(0, 0, 0, 0.486) 1px;
+    border-radius: 5px;
+    padding: 0.4rem;
+}
+
+.modalUsuario input:focus{
+    outline: none;
+    border:  solid 1px black;
+    transform: translateY(-2px);
+    box-shadow:  0 5px 5px rgba(0, 0, 0, 0.308);
+}
+
+
+.modalUsuario{
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.error{
+    color: red;
+    margin: 0;
+}

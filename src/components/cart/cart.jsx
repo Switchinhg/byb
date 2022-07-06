@@ -1,25 +1,35 @@
 import './cart.css'
 import { useCartContext } from "../contexto/CartContext"
-import { VscRemove,VscAdd } from "react-icons/vsc";
-import { Link } from 'react-router-dom';
+
+import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content';
 import { addDoc, collection, getFirestore } from 'firebase/firestore'
+import Cartlist from '../CartList/Cartlist';
+import Modal from '../Modal/Modal';
+import { useState } from 'react';
+import Formulario from '../Formulario/Formulario';
+import { UsarContextoUsuario } from '../contexto/userContext';
 
 const Cart = () => {
-    const { cart, modificarCarrito,borrarProd,total,totalProds,borrarCarrito} = useCartContext()
+    const { cart, total,totalProds,borrarCarrito} = useCartContext()
+    const {usuario} = UsarContextoUsuario()
+    const [abierto , setAbierto] = useState(false)
     const MsgCorrecto = withReactContent(Swal)
     const db = getFirestore()
     const ordenCollection = collection(db,'ordenes')
+    const navigate = useNavigate();
 
-    async function crearOrden(e){
-      // e.preventDefault()
+    async function crearOrden(){
+      console.log(usuario)
       let orden = {
-                    usuario:{nombre:'Santiago',email:'santifonlop@hotmail.com',telefono:'094680478'},
+                    usuario: usuario,
                     total: total(),
                     /* Pongo todo el obj producto en la orden para mostrar todo el producto en la orden */
-                    items: {...cart}
+                    items: {...cart},
+                    activo:true
                   }
+                  console.log(orden)
       addDoc(ordenCollection, orden)
 
       .then(resp=>
@@ -30,7 +40,9 @@ const Cart = () => {
         icon: 'success',
         confirmButtonText: 'Continuar'
       }),
-      // borrarCarrito()
+      borrarCarrito(),
+      navigate('/comprafinalizada')
+
       )
       .catch(err=>console.log(err))
       
@@ -43,24 +55,7 @@ const Cart = () => {
 
     <ul className='carritoProds'>
     { totalProds()> 0 ? 
-        cart.map(el => (  <li key={el.id} className="carritProd">
-          <div className='imgprod'>
-            <img className='imgProd' src={el.img} alt="" />
-          </div>
-          <div className="infoCarritoProd">
-            nombre: {el.prodName} <br />
-            precio: {el.precio}
-            </div>
-            <div className="botonProd">
-            <p> Cantidad: {el.cantidad} {`  `}  </p>
-              <div className='botonAgregar'>
-            <button onClick={()=>modificarCarrito(el.id,'plus')} className="remove boton"><VscAdd /></button>
-            <button onClick={()=>modificarCarrito(el.id,'minus')} className="remove boton"><VscRemove /></button>
-              </div>
-            <button onClick={()=>borrarProd(el.id)} className="remtodo boton">Borrar</button>
-            </div>
-          </li>
-          ))
+        <Cartlist />
           
         :
         <div>
@@ -73,15 +68,27 @@ const Cart = () => {
     <div className="total">
       {total()>0? <p > Total <span className='pesos'> ${total() }</span></p>: null}
       {totalProds()>0? 
-      <div>
-        <button onClick={()=>borrarCarrito()} className='boton'>Vaciar Carrito</button>
+        <div>
+          <button onClick={()=>borrarCarrito()} className='boton'>Vaciar Carrito</button>
 
-      <button onClick={()=>{
-        crearOrden()
-      }} className='boton'>Realizar Compra</button>
-      </div>
-    
-         : null
+        <button onClick={()=>{
+          setAbierto(true)
+        }} 
+
+        className='boton' >Realizar Compra</button>
+          <Modal abierto={abierto} Cerrado={() => {
+            setAbierto(false)
+          }}>
+            {/* guardar lo que viene del formulario en el useeffect */}
+            <Formulario Cerrado={()=>{
+              setAbierto(false)
+              crearOrden()}}
+            />
+            
+          </Modal>
+        </div>
+        : 
+        null
         }
       
     </div>

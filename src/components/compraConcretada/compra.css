@@ -1,0 +1,8 @@
+.centrar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.centrar img{
+    height: 300px;
+}
