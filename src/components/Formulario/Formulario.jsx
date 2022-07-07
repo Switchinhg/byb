@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { UsarContextoUsuario } from '../contexto/userContext'
+import './formulario.css'
 
 const Formulario = ({Cerrado}) => {
     const { agregarUsuario } = UsarContextoUsuario()
@@ -27,7 +28,6 @@ const Formulario = ({Cerrado}) => {
             ...datos,
             [e.target.name]: e.target.value
         })
-        console.log(datos)
     }
     const manejarEnvio = e => {
 
@@ -48,8 +48,8 @@ const Formulario = ({Cerrado}) => {
         }
             //enviar al contexto los datos del usuario
             agregarUsuario(datos)
-            // Cerrar Modal
-            Cerrado()
+            // Cerrar Modal y enviar los datos a cart
+            Cerrado(datos)
         
     }
 

@@ -6,3 +6,7 @@
 .centrar img{
     height: 300px;
 }
+
+.columna{
+    flex-direction: column;
+}

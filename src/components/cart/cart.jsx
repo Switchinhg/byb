@@ -9,21 +9,20 @@ import Cartlist from '../CartList/Cartlist';
 import Modal from '../Modal/Modal';
 import { useState } from 'react';
 import Formulario from '../Formulario/Formulario';
-import { UsarContextoUsuario } from '../contexto/userContext';
+// import { UsarContextoUsuario } from '../contexto/userContext';
 
 const Cart = () => {
     const { cart, total,totalProds,borrarCarrito} = useCartContext()
-    const {usuario} = UsarContextoUsuario()
+    // const { usuario } = UsarContextoUsuario()
     const [abierto , setAbierto] = useState(false)
     const MsgCorrecto = withReactContent(Swal)
     const db = getFirestore()
     const ordenCollection = collection(db,'ordenes')
-    const navigate = useNavigate();
+    const navigate = useNavigate()    
 
-    async function crearOrden(){
-      console.log(usuario)
+    async function crearOrden(data){
       let orden = {
-                    usuario: usuario,
+                    usuario: data,
                     total: total(),
                     /* Pongo todo el obj producto en la orden para mostrar todo el producto en la orden */
                     items: {...cart},
@@ -79,11 +78,8 @@ const Cart = () => {
           <Modal abierto={abierto} Cerrado={() => {
             setAbierto(false)
           }}>
-            {/* guardar lo que viene del formulario en el useeffect */}
-            <Formulario Cerrado={()=>{
-              setAbierto(false)
-              crearOrden()}}
-            />
+            {/* guardar lo que viene del formulario en el useeffect // crearOrden()*/}
+            <Formulario Cerrado={crearOrden}/>
             
           </Modal>
         </div>

@@ -1,0 +1,36 @@
+input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+
+  input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+.modalUsuario input{
+    border: solid rgba(0, 0, 0, 0.486) 1px;
+    border-radius: 5px;
+    padding: 0.4rem;
+}
+
+.modalUsuario input:focus{
+    outline: none;
+    border:  solid 1px black;
+    transform: translateY(-2px);
+    box-shadow:  0 5px 5px rgba(0, 0, 0, 0.308);
+}
+
+
+.modalUsuario{
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.error{
+    color: red;
+    margin: 0;
+}
