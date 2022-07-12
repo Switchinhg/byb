@@ -1,0 +1,31 @@
+.footer{
+    display: flex;
+    gap: 1rem;
+    justify-content: space-around;
+}
+.sitemap{
+    display: flex;
+    flex-direction: column;
+}
+.sitemap a{
+    color: black;
+}
+.sitemap a:hover{
+    color: gray;
+}
+
+.redes img{
+    width: 2rem;
+}
+.redes img:hover{
+    filter: grayscale(1);
+}
+.links{
+    display: flex;
+    gap: 1rem;
+}
+.footerc{
+    background-color: rgb(220, 220, 220);
+    padding: 3rem;
+    margin-top: 2rem;
+}

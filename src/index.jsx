@@ -8,6 +8,7 @@ import CompraConcretada from './components/compraConcretada/CompraConcretada';
 import Contacto from './components/contacto/Contacto';
 import { CartContextProvider } from './components/contexto/CartContext';
 import { UserContextProvider } from './components/contexto/userContext';
+import Footer from './components/Footer/Footer';
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import { Login } from './components/Login/Login';
@@ -52,6 +53,7 @@ root.render(
           <Route path='*' element={<Navigate to='/404' />}/>
 
         </Routes>
+        <Footer />
       </BrowserRouter>
       </UserContextProvider>
     </CartContextProvider>

@@ -2,11 +2,11 @@
 import Item from '../item/item'
 import './itemlist.css'
 
-const ItemList = ({prods})=> {
+const ItemList = ({prods,donde})=> {
     return(
     <>
         {prods.map((prod) =>(
-            <Item key={prod.id} prod={prod}/>
+            <Item key={prod.id} donde={donde} prod={prod}/>
             ))}
     </>
     )

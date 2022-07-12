@@ -1,6 +1,7 @@
 .producto_img  {
     height: 177.777px;
     width: 266px;
+    border-radius: 5px 5px 0 0;
 }
 
 .producto_nombre  {
@@ -11,18 +12,30 @@
 
 .producto {
 
-    width: 290px;
     background-color: white;
-    box-shadow: 1px 1px 5px gray;
+    box-shadow: 0 1px 5px gray;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
-    padding-bottom: 2rem;
     margin-bottom: 1rem;
+    color: black;
+   
+}
 
+a{
+    text-decoration: none;
+}
+.producto:hover{
+    animation: hover 0.2s 1 alternate ease-out forwards;
+    
+}
+.producto p {
+    margin:  1rem;
+}
+.hovers{
+    display: none;
 }
 .boton {
     background-color: white;
@@ -32,4 +45,14 @@
     color: black;
     padding: 0.5rem;
     border-radius: 5px;
+}
+
+@keyframes hover {
+    0%{
+
+    }
+    100%{
+        transform:translateY(-15px);
+        box-shadow: 0 5px 15px gray;
+    }
 }

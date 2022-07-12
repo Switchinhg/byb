@@ -1,6 +1,7 @@
 import { collection, getDocs, getFirestore, limit, query } from 'firebase/firestore'
 import {useState,useEffect} from 'react'
 import { Link } from 'react-router-dom'
+import Carousel from '../Carousel/Carousel'
 import ItemList from '../itemlist/itemlist'
 import Spinner from '../spinner/spinner'
 
@@ -13,7 +14,7 @@ const ItemListContainer = () => {
     useEffect(() => {
         const db = getFirestore()
         const queryCollection =  collection(db,'productos')
-        const q = query(queryCollection, limit(6))
+        const q = query(queryCollection, limit(3))
 
         getDocs(q)
         .then(resp => setProds(resp.docs.map(item=>({id:item.id, ...item.data() } ) ) ) )
@@ -23,6 +24,7 @@ const ItemListContainer = () => {
     
     return (
         <div className="contenedor">
+            <Carousel />
             <div className="destacados_titulo">
                 <h1 className="titulos">Destacados</h1>
             </div>
@@ -30,7 +32,7 @@ const ItemListContainer = () => {
             {load?
             <Spinner />
             :
-            <ItemList prods={prods} />
+            <ItemList prods={prods} donde='ILC'/>
             }
             </div>
             <div className="vertodos">
