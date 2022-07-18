@@ -1,11 +1,14 @@
 import './NavBar.css'
 import logo from '../../imgs/bigandbonnie1.png'
 import CartWidget from '../CartWidget/cart'
-import {Link, NavLink} from 'react-router-dom'
+import {Link, NavLink, useNavigate} from 'react-router-dom'
 import { VerBoton } from '../verificaciones/verificaciones'
+import Catalogo from '../Catalogo/Catalogo'
+import BuscadorContainer from '../BuscadorContainer/BuscadorContainer'
 
 
 export default function NavBar() {
+    
     return(
         <div className="maincontainer">
 
@@ -16,7 +19,9 @@ export default function NavBar() {
                         <Link to='/'><img src={logo} alt="" /></Link>
                         
                         </div>
-                    <div className="navbar-input"><input type="text" placeholder='BUSCAR' /></div>
+
+                    <BuscadorContainer />
+
                     <div className="topbar">
 
                     <VerBoton>Admin</VerBoton>

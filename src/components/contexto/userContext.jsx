@@ -9,8 +9,6 @@ export const UserContextProvider = ({children}) => {
 
     const agregarUsuario = (usuario) =>{
         ponerUsuario(usuario) 
-        console.log("usuario de userCOntext")
-        console.log(usuario)
     } 
     return (
     <ContextoUsuario.Provider 

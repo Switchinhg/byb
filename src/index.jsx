@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom' 
 import NotFound from './components/404/NotFound';
+import Buscador from './components/Buscador/Buscador';
 import Cart from './components/cart/cart';
 import Catalogo from './components/Catalogo/Catalogo';
 import CompraConcretada from './components/compraConcretada/CompraConcretada';
@@ -36,6 +37,7 @@ root.render(
           {/* mostrar producto especifico */}
           <Route path='/detalle/:ID' element={<ItemDetailContainer/>} />
 
+          <Route path='/buscador' element={<Buscador/>} />
           {/* Catalogo */}
           <Route path='/catalogo' element={<Catalogo/>} />
           {/* Carrito */}

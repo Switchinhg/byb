@@ -1,0 +1,12 @@
+.prodNoEncontrado {
+    display: grid;
+    place-items: center;
+
+
+}
+.prodNoEncontrado img{
+    width: 300px;
+}
+.mover{
+    position: relative;
+}

@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import './item.css'
 
 const Item = ({ prod , donde}) => {
-    console.log(donde)
     return(
         <Link to={`/detalle/${prod.id}`}> 
             <div className="producto" >

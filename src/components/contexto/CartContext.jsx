@@ -15,9 +15,16 @@ export const CartContextProvider = ({ children }) => {
     
 
     const addToCart = (producto) => {        
+        const cart3 = cart.find(el => producto.nombrePersonalizado === el.nombrePersonalizado && producto.numPersonalizado === el.numPersonalizado)
+        if(cart3){
+            modificarCarrito(null, 'plus',1,cart3)
+        }else{
+            setCart([...cart, { ...producto }])
+        }
         // si el producto ya esta en el carrito, agregarle la cantidad en vez de agregarlo entero
         const cart2 = cart.find(el => el.id === producto.id)
-        if (cart2) {
+        
+        if (cart2 && !producto.personalizable) {
             modificarCarrito(producto.id, 'plus',producto.cantidad)
             /* si la cantidad del producto en el carrito es mayor al stock, pone lo maximo disponible */
             if(cart2.cantidad >producto.stock){
@@ -25,37 +32,68 @@ export const CartContextProvider = ({ children }) => {
             }
             
         } else {
-            setCart([...cart, { ...producto }])
+            if(!producto.personalizable){
+                setCart([...cart, { ...producto }])
+
+                console.log("en if prod.persoa")
+                console.log(producto)
+            }
         }
+        console.log(producto)
     }
 
     /* Sacar item del carrito */
-    const modificarCarrito = (id,hacer,cuanto) => {
-        /* Busca el objeto del item a remover */
-        const item = cart.find(e=>e.id===id)
-            /* busca el index del objeto a remover */
-        const index = cart.indexOf(item)
+    const modificarCarrito = (id,hacer,cuanto,psf) => {
+        if(psf){
+                /* busca el index del objeto a remover */
+                const index = cart.indexOf(psf)
+                console.log("index")
+                console.log(index)
+                //filtrar el cart de psf
+                const items = cart.filter(e=>e.nombrePersonalizado!==psf.nombrePersonalizado || e.numPersonalizado!==psf.numPersonalizado)
+                psf.cantidad++
 
-            if(item.cantidad>=1){
-                const items =cart.filter(e=>e.id!==id)
+                    items.splice(index,0,psf)
+                    setCart(items)
+                    console.log("psf")
+                    console.log(psf)
 
-                if(hacer==='minus')item.cantidad-=1
-                else if(item.cantidad<item.stock)item.cantidad+=cuanto?cuanto:1
+        }else{
 
-                items.splice(index,0,item)
-                setCart(items)
+                /* Busca el objeto del item a remover */
+                const item = cart.find(e=>e.id===id)
+                /* busca el index del objeto a remover */
+                const index = cart.indexOf(item)
+                
+                if(item.cantidad>=1){
+                    const items =cart.filter(e=>e.id!==id)
 
-                if(item.cantidad===0)setCart(cart.filter(e=>e.id!==id))
+                    if(hacer==='minus')item.cantidad-=1
+                    else if(item.cantidad<item.stock)item.cantidad+=cuanto?cuanto:1
 
+                    items.splice(index,0,item)
+                    setCart(items)
+
+                    if(item.cantidad===0)setCart(cart.filter(e=>e.id!==id))
+
+            }
+            else{
+                /* si tiene 1 item y lo borra se saca el producto */
+                setCart(cart.filter(e=>e.id!==id))
+                console.log("filtrado")
+            } 
+            console.log("else psf")
+            console.log(psf)
         }
-        else{
-            /* si tiene 1 item y lo borra se saca el producto */
-            setCart(cart.filter(e=>e.id!==id))
-            console.log("filtrado")
-        } 
     }
     const borrarProd = (id)=>{
-        setCart(cart.filter(e=>e.id!==id))
+        /* MODIFICAR */
+        let idk = cart.find(e=>e.nombrePersonalizado=== id)
+        if(idk){
+            const indexDel = cart.indexOf(idk)
+            setCart(cart.filter(e=>e))
+        }
+        setCart(cart.filter(e=>e.nombrePersonalizado!==id || e.id ==id))
     }
 
     const total = () =>{

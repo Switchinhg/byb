@@ -28,7 +28,6 @@ const Cart = () => {
                     items: {...cart},
                     activo:true
                   }
-                  console.log(orden)
       addDoc(ordenCollection, orden)
 
       .then(resp=>

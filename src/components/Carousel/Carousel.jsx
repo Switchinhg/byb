@@ -16,8 +16,6 @@ export default () => {
         autoplay={{ delay: 5000 }}
         spaceBetween={50}
         slidesPerView={1}
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log(swiper)}
         >
             <SwiperSlide>
                 <img src={'./img/banner_1.png'} alt="" />

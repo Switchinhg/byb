@@ -3,7 +3,6 @@ import ItemList from '../itemlist/itemlist'
 import Spinner from '../spinner/spinner'
 import { useParams } from 'react-router-dom'
 import Categorias from '../CatalogoCategorias/Categorias'
-import ProdNotFound from '../ProdNotFound/ProdNotFound'
 import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore'
 
 const Catalogo = () => {
@@ -43,11 +42,7 @@ const Catalogo = () => {
                 {load?
                 <Spinner />
                 :
-                prods.length !== 0?
-                
                 <ItemList prods={prods} />
-                :
-                    <ProdNotFound />
                 }
                 </div>
             </div>

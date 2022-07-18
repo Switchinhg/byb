@@ -7,16 +7,42 @@ import './ItemDetail.css'
 export const ItemDetail = ({producto}) => {
     /* para cambiar de boton al hacer clic en comprar */
     const [inputType, setInputTipe] = useState('button')
+    const [texto,setTexto] = useState('')
+    const [num,setnum] = useState('')
+    const [error,setError] = useState("")
 
     /* para usar el contexto,usamos la funcion exportada de CartContext 
     en vez de importar dos cosas */
     const { addToCart } = useCartContext()
 
+    const personalizado = pers =>{
+        setTexto(pers.target.value.trim())
+    }
+    const numPersonalizado = pers =>{
+        setnum(pers.target.value.trim())
+    }
     const onAdd=(cant) =>{
-        /* Al cambiar el input al hacer clic en el boton se cambia a seguir comprando o ir a cart */
-        setInputTipe('input')
-        /* Crea un nuevo objeto de producto agregandole la cantidad */
-        addToCart({...producto, cantidad: cant})
+        if(!producto.personalizable){
+            /* Al cambiar el input al hacer clic en el boton se cambia a seguir comprando o ir a cart */
+            setInputTipe('input')
+            /* Crea un nuevo objeto de producto agregandole la cantidad */
+            addToCart({...producto, cantidad: cant, nombrePersonalizado:texto,numPersonalizado:num})
+        }
+        else{
+
+            
+            if(texto && num ){
+                /* Al cambiar el input al hacer clic en el boton se cambia a seguir comprando o ir a cart */
+                setInputTipe('input')
+                /* Crea un nuevo objeto de producto agregandole la cantidad */
+                addToCart({...producto, cantidad: cant, nombrePersonalizado:texto,numPersonalizado:num})
+                setError("")
+            }else{
+                setError("Casillas vacias o número incorrecto")
+            }
+        }
+        
+        
     }
 
 return (
@@ -30,11 +56,15 @@ return (
                 <p>Categoria: {producto.categoria}</p>
                 <p>{producto.info}</p>
                 <p>${producto.precio}</p>
+                {producto.personalizable?<input type="text" id='tos' placeholder='Texto' onChange={personalizado} />:null}
+                {producto.personalizable?<input type="number"  id='tos' placeholder='Número' onChange={numPersonalizado} />:null}
+                <p className='error'>{error}</p>
+                <br />
             </div>
             <div className="counter">
                 {
                     inputType==='button'?
-                    <ItemCount stock={producto.stock} initial={1} onAdd={onAdd}/>
+                    <ItemCount stock={producto.stock} personalizable={producto.personalizable} initial={1} onAdd={onAdd}/>
                     :
                     <AgregarCarrito/>
 
