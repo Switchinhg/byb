@@ -1,9 +1,8 @@
 import './NavBar.css'
 import logo from '../../imgs/bigandbonnie1.png'
 import CartWidget from '../CartWidget/cart'
-import {Link, NavLink, useNavigate} from 'react-router-dom'
+import {Link, NavLink} from 'react-router-dom'
 import { VerBoton } from '../verificaciones/verificaciones'
-import Catalogo from '../Catalogo/Catalogo'
 import BuscadorContainer from '../BuscadorContainer/BuscadorContainer'
 
 

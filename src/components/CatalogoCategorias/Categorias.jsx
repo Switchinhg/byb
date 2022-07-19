@@ -1,15 +1,17 @@
 import React from 'react'
-import { Link, NavLink, useParams } from 'react-router-dom'
-
+import {  NavLink, useParams } from 'react-router-dom'
+import './categorias.css'
 
 const Categorias = () => {
   const {categoriaID} = useParams()
   return (
     <div>
-    <h2>Buscador</h2>
-    <NavLink to='/catalogo' className={categoriaID === undefined ? 'selected boton' : 'boton'}> Todos</NavLink>
-    <NavLink to='/catalogo/categoria/cama' className={({ isActive })=> isActive ?  'selected boton': 'boton'}> Camas</NavLink>
-    <NavLink to='/catalogo/categoria/collar' className={({ isActive })=> isActive ?  'selected boton': 'boton'}> Collares</NavLink>
+    <h2>Categorias</h2>
+    <div className='separador'>
+    <NavLink to='/catalogo' className={categoriaID === undefined ? 'selected btnCategoria' : 'deselected btnCategoria'}> Todos</NavLink>
+    <NavLink to='/catalogo/categoria/cama' className={({ isActive })=> isActive ?  'selected btnCategoria': 'deselected btnCategoria'}> Camas</NavLink>
+    <NavLink to='/catalogo/categoria/collar' className={({ isActive })=> isActive ?  'selected btnCategoria': 'deselected btnCategoria'}> Collares</NavLink>
+    </div>
 
 </div>
   )

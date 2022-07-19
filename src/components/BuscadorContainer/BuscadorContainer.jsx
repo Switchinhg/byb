@@ -6,8 +6,10 @@ const BuscadorContainer = () => {
     const sendData = (data) => {
         data.preventDefault()
         
-        navigate('/buscador', {state: data.target.tos.value})
-        data.target.reset()
+        if(data.target.tos.value){
+          navigate('/buscador', {state: data.target.tos.value})
+          data.target.reset()
+        }
     }
   return (
     <div className="navbar-input">

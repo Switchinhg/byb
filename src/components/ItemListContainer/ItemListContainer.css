@@ -32,12 +32,9 @@
 
 .boton:hover {
     color: black;
-    background-color: tomato;
+    background-color: rgba(224, 177, 124, 0.603);
 }
-.botonChico{
-    width: 3rem;
-    
-}
+
 
 .precio {
     text-align: center;

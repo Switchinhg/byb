@@ -52,19 +52,22 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
     text-decoration: none;
-    border: solid 1px gray;
     padding: 0.5rem;
     border-radius: 5px;
 }
 .topbar a:hover{
-    background-color: brown;
+    background-color: rgba(224, 177, 124, 0.603);
     color: white;
+    box-shadow: 0 0 5px  gray;
+   
 }
 .deselected{
     color: black;
-
+    box-shadow: 0 0 1px  gray;
 }
 .selected{
-    background-color: brown;
+    background-color: rgb(224, 177, 124);
     color: white;
+    box-shadow: 0 0 1px  gray;
+    border: none;
 }

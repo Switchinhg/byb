@@ -28,9 +28,9 @@ function ItemCount ({stock,initial, onAdd, personalizable}){
         null
         :    
             <div className="separar">
-            <button onClick={sumarProd}  className="botonChico boton">+</button>
+            <button onClick={sumarProd}  className=" boton">+</button>
             <p className='contador'>{productos}</p>
-            <button onClick={restarProd} className="botonChico boton">-</button>
+            <button onClick={restarProd} className=" boton">-</button>
             </div>
             }
             <button className='boton agregar' onClick={onChange}>Agregar</button>

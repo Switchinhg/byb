@@ -34,7 +34,7 @@ const Cartlist = () => {
                     <button onClick={()=>modificarCarrito(el.id,'minus')} className="remove boton"><VscRemove /></button>
                 </div>
                 }
-                <button onClick={()=>borrarProd(el.nombrePersonalizado?el.nombrePersonalizado:el.id)} className="remtodo boton">Borrar</button>
+                <button onClick={()=>borrarProd(el.personalizable?el:el.id)} className="remtodo boton">Borrar</button>
             </div>
             </div>
             ))

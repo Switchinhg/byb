@@ -1,0 +1,18 @@
+.separador{
+    display:flex;
+    gap: 0.5rem;
+}
+.btnCategoria {
+    font-style: none;
+    text-decoration: none;
+    color: black;
+    padding: 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btnCategoria:hover {
+    color: black;
+    background-color: rgba(224, 177, 124, 0.603);
+    box-shadow: 0 0 5px  gray;
+}

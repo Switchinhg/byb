@@ -21,7 +21,9 @@ const Footer = () => {
             </div>
             <div className="pagos">
                 <h4>Envios</h4>
+                <p>Envios gratis adentro de montevideo</p>
                 <h4>Pagos</h4>
+                <img className='metodopago' src={'./img/mercadopago.png'} alt="" />
 
             </div>
             <div className="redes">

@@ -1,7 +1,6 @@
 import { collection, getDocs, getFirestore } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
-import Item from '../item/item';
 import ItemList from '../itemlist/itemlist';
 import ProdNotFound from '../ProdNotFound/ProdNotFound'
 import Spinner from '../spinner/spinner';

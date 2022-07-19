@@ -9,6 +9,7 @@ import Cartlist from '../CartList/Cartlist';
 import Modal from '../Modal/Modal';
 import { useState } from 'react';
 import Formulario from '../Formulario/Formulario';
+import CarritVacio from '../CarritoVacio/CarritVacio';
 // import { UsarContextoUsuario } from '../contexto/userContext';
 
 const Cart = () => {
@@ -56,12 +57,7 @@ const Cart = () => {
         <Cartlist />
           
         :
-        <div>
-        <p>No hay productos en el carrito</p>
-        <Link to='/catalogo'>
-        <button className='boton'>Ir a catalogo</button>
-        </Link>
-        </div>
+        <CarritVacio />
         } 
     <div className="total">
       {total()>0? <p > Total <span className='pesos'> ${total() }</span></p>: null}

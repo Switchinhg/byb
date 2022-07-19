@@ -10,6 +10,9 @@ export const ItemDetail = ({producto}) => {
     const [texto,setTexto] = useState('')
     const [num,setnum] = useState('')
     const [error,setError] = useState("")
+    // abecedario array con split
+    const abecedario = "abcdefghijklmnopqrstuvwxyz".split("")
+
 
     /* para usar el contexto,usamos la funcion exportada de CartContext 
     en vez de importar dos cosas */
@@ -56,18 +59,23 @@ return (
                 <p>Categoria: {producto.categoria}</p>
                 <p>{producto.info}</p>
                 <p>${producto.precio}</p>
-                {producto.personalizable?<input type="text" id='tos' placeholder='Texto' onChange={personalizado} />:null}
-                {producto.personalizable?<input type="number"  id='tos' placeholder='Número' onChange={numPersonalizado} />:null}
-                <p className='error'>{error}</p>
-                <br />
             </div>
             <div className="counter">
                 {
                     inputType==='button'?
+                    <div className="mover">
+                    
+                        {producto.personalizable?<input type="text" id='tos' placeholder='Nombre' onChange={personalizado} />:null}
+                        {producto.personalizable?<input type="number"  id='tos' placeholder='Número' onChange={numPersonalizado} />:null}
+                        {producto.personalizable?<p className='error'>{error}</p>:null}
+                        
+                        
+
                     <ItemCount stock={producto.stock} personalizable={producto.personalizable} initial={1} onAdd={onAdd}/>
+                        
+                    </div>
                     :
                     <AgregarCarrito/>
-
                 }
             </div>
         </div>

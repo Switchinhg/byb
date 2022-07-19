@@ -87,13 +87,13 @@ export const CartContextProvider = ({ children }) => {
         }
     }
     const borrarProd = (id)=>{
-        /* MODIFICAR */
-        let idk = cart.find(e=>e.nombrePersonalizado=== id)
-        if(idk){
-            const indexDel = cart.indexOf(idk)
-            setCart(cart.filter(e=>e))
-        }
-        setCart(cart.filter(e=>e.nombrePersonalizado!==id || e.id ==id))
+        console.log("id")
+        console.log(id)
+        id.personalizable?
+        setCart(cart.filter(e=>e.nombrePersonalizado!==id.nombrePersonalizado || e.numPersonalizado!==id.numPersonalizado))
+        :
+        setCart(cart.filter(e=> e.id ==id))
+        
     }
 
     const total = () =>{
