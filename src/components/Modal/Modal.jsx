@@ -7,7 +7,7 @@ export default function Modal({abierto , children , Cerrado}) {
     <>
     
     <div className="fondo-modal" onClick={ Cerrado}></div>
-        <div className='contenido-modal '>
+    <div className='contenido-modal '>
         {children}
     </div>
     </>

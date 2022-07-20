@@ -11,7 +11,6 @@ export const ItemDetail = ({producto}) => {
     const [num,setnum] = useState('')
     const [error,setError] = useState("")
     // abecedario array con split
-    const abecedario = "abcdefghijklmnopqrstuvwxyz".split("")
 
 
     /* para usar el contexto,usamos la funcion exportada de CartContext 
@@ -29,7 +28,7 @@ export const ItemDetail = ({producto}) => {
             /* Al cambiar el input al hacer clic en el boton se cambia a seguir comprando o ir a cart */
             setInputTipe('input')
             /* Crea un nuevo objeto de producto agregandole la cantidad */
-            addToCart({...producto, cantidad: cant, nombrePersonalizado:texto,numPersonalizado:num})
+            addToCart({...producto, cantidad: cant})
         }
         else{
 
@@ -61,22 +60,18 @@ return (
                 <p>${producto.precio}</p>
             </div>
             <div className="counter">
-                {
-                    inputType==='button'?
-                    <div className="mover">
+                {inputType==='button'?
+                <div className="mover">
+                
+                    {producto.personalizable?<input type="text" id='tos' placeholder='Nombre' onChange={personalizado} />:null}
+                    {producto.personalizable?<input type="number"  id='tos' placeholder='Número' onChange={numPersonalizado} />:null}
+                    {producto.personalizable?<p className='error'>{error}</p>:null}
                     
-                        {producto.personalizable?<input type="text" id='tos' placeholder='Nombre' onChange={personalizado} />:null}
-                        {producto.personalizable?<input type="number"  id='tos' placeholder='Número' onChange={numPersonalizado} />:null}
-                        {producto.personalizable?<p className='error'>{error}</p>:null}
-                        
-                        
-
                     <ItemCount stock={producto.stock} personalizable={producto.personalizable} initial={1} onAdd={onAdd}/>
-                        
-                    </div>
-                    :
-                    <AgregarCarrito/>
-                }
+                    
+                </div>
+                :
+                <AgregarCarrito/>}
             </div>
         </div>
     </div>

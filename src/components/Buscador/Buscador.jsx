@@ -8,11 +8,10 @@ const Buscador = () => {
     const location = useLocation();
     const[prods,setProds] = useState([])
     let[load,setLoading] = useState(true)
-
     
     const db = getFirestore()
     const queryCollection =  collection(db,'productos')
-    
+
     useEffect(() => {
       setLoading(true)
 

@@ -1,7 +1,7 @@
 import './cart.css'
 import { useCartContext } from "../contexto/CartContext"
 
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content';
 import { addDoc, collection, getFirestore } from 'firebase/firestore'
@@ -10,11 +10,9 @@ import Modal from '../Modal/Modal';
 import { useState } from 'react';
 import Formulario from '../Formulario/Formulario';
 import CarritVacio from '../CarritoVacio/CarritVacio';
-// import { UsarContextoUsuario } from '../contexto/userContext';
 
 const Cart = () => {
     const { cart, total,totalProds,borrarCarrito} = useCartContext()
-    // const { usuario } = UsarContextoUsuario()
     const [abierto , setAbierto] = useState(false)
     const MsgCorrecto = withReactContent(Swal)
     const db = getFirestore()
@@ -53,36 +51,26 @@ const Cart = () => {
       <h1>Carrito</h1>
 
     <ul className='carritoProds'>
-    { totalProds()> 0 ? 
-        <Cartlist />
-          
-        :
-        <CarritVacio />
-        } 
-    <div className="total">
-      {total()>0? <p > Total <span className='pesos'> ${total() }</span></p>: null}
-      {totalProds()>0? 
-        <div>
-          <button onClick={()=>borrarCarrito()} className='boton'>Vaciar Carrito</button>
-
-        <button onClick={()=>{
-          setAbierto(true)
-        }} 
-
-        className='boton' >Realizar Compra</button>
-          <Modal abierto={abierto} Cerrado={() => {
-            setAbierto(false)
-          }}>
-            {/* guardar lo que viene del formulario en el useeffect // crearOrden()*/}
-            <Formulario Cerrado={crearOrden}/>
+      { totalProds()> 0 ? 
+          <Cartlist />
             
-          </Modal>
-        </div>
-        : 
-        null
-        }
-      
-    </div>
+          :
+          <CarritVacio />
+          } 
+      <div className="total">
+        {total()>0? <p > Total <span className='pesos'> ${total() }</span></p>: null}
+        {totalProds()>0? 
+          <div>
+            <button onClick={()=>borrarCarrito()} className='boton'>Vaciar Carrito</button>
+            <button onClick={()=>{setAbierto(true)}} className='boton' >Realizar Compra</button>
+            <Modal abierto={abierto} Cerrado={() => {setAbierto(false)}}>
+              <Formulario Cerrado={crearOrden}/>
+            </Modal>
+          </div>
+          : 
+          null
+          }
+      </div>
     </ul>
   
           </div>

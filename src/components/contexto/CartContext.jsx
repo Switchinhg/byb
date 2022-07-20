@@ -16,7 +16,7 @@ export const CartContextProvider = ({ children }) => {
 
     const addToCart = (producto) => {        
         const cart3 = cart.find(el => producto.nombrePersonalizado === el.nombrePersonalizado && producto.numPersonalizado === el.numPersonalizado)
-        if(cart3){
+        if(cart3 && producto.personalizable){
             modificarCarrito(null, 'plus',1,cart3)
         }else{
             setCart([...cart, { ...producto }])
@@ -35,11 +35,8 @@ export const CartContextProvider = ({ children }) => {
             if(!producto.personalizable){
                 setCart([...cart, { ...producto }])
 
-                console.log("en if prod.persoa")
-                console.log(producto)
             }
         }
-        console.log(producto)
     }
 
     /* Sacar item del carrito */
@@ -47,19 +44,14 @@ export const CartContextProvider = ({ children }) => {
         if(psf){
                 /* busca el index del objeto a remover */
                 const index = cart.indexOf(psf)
-                console.log("index")
-                console.log(index)
                 //filtrar el cart de psf
                 const items = cart.filter(e=>e.nombrePersonalizado!==psf.nombrePersonalizado || e.numPersonalizado!==psf.numPersonalizado)
                 psf.cantidad++
 
                     items.splice(index,0,psf)
                     setCart(items)
-                    console.log("psf")
-                    console.log(psf)
 
         }else{
-
                 /* Busca el objeto del item a remover */
                 const item = cart.find(e=>e.id===id)
                 /* busca el index del objeto a remover */
@@ -80,19 +72,14 @@ export const CartContextProvider = ({ children }) => {
             else{
                 /* si tiene 1 item y lo borra se saca el producto */
                 setCart(cart.filter(e=>e.id!==id))
-                console.log("filtrado")
             } 
-            console.log("else psf")
-            console.log(psf)
         }
     }
     const borrarProd = (id)=>{
-        console.log("id")
-        console.log(id)
         id.personalizable?
         setCart(cart.filter(e=>e.nombrePersonalizado!==id.nombrePersonalizado || e.numPersonalizado!==id.numPersonalizado))
         :
-        setCart(cart.filter(e=> e.id ==id))
+        setCart(cart.filter(e=> e.id !== id))
         
     }
 

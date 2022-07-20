@@ -1,9 +1,10 @@
+import { memo } from 'react'
 import { Link } from 'react-router-dom'
 import './item.css'
 
-const Item = ({ prod , donde}) => {
-    return(
-        <Link to={`/detalle/${prod.id}`}> 
+const Item = memo(({ prod , donde}) => {
+        return(
+            <Link to={`/detalle/${prod.id}`}> 
             <div className="producto" >
                 <img className="producto_img" src={ prod.img } alt="" />
                 <p className="producto_nombre"><b>{prod.prodName}</b></p>
@@ -12,7 +13,7 @@ const Item = ({ prod , donde}) => {
             </div>
         </Link>
         
-    )
-}
+        )
+    })
 
 export default Item
